@@ -20,6 +20,8 @@ set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
 set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
 
 add_definitions(-DDEBUG)
+add_definitions(-DTRACE)
+add_definitions(-DOS_USE_TRACE_SEMIHOSTING_DEBUG)
 add_compile_options(-mcpu=cortex-m4 -mthumb -mfloat-abi=soft -Og -fmessage-length=0 -fsigned-char -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -Wno-missing-declarations -MMD -MP)
 
 set(CMAKE_EXE_LINKER_FLAGS
@@ -28,7 +30,7 @@ set(CMAKE_EXE_LINKER_FLAGS
 -Wall -Wextra \
 -g3 \
 -T sections.ld \
--nostartfiles -Xlinker -L${PROJECT_BINARY_DIR}/lib --specs=nosys.specs"
+-nostartfiles -Xlinker -L${PROJECT_BINARY_DIR}/lib --specs=nano.specs"
 )
 
 INCLUDE_DIRECTORIES(${PROJECT_SRC_DIR}/freertos/include)

@@ -26,7 +26,9 @@
  */
 
 // ----------------------------------------------------------------------------
-
+#ifndef TRACE
+#define TRACE
+#endif
 #if defined(TRACE)
 
 #include "cmsis_device.h"
@@ -80,7 +82,9 @@ trace_initialize(void)
 {
   // For regular ITM / semihosting, no inits required.
 }
-
+#ifndef OS_USE_TRACE_SEMIHOSTING_DEBUG
+#define OS_USE_TRACE_SEMIHOSTING_DEBUG
+#endif
 // ----------------------------------------------------------------------------
 
 // This function is called from _write() for fd==1 or fd==2 and from some

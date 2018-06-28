@@ -1,6 +1,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
+#include "diag/Trace.h"
 
 static QueueHandle_t xQueue = NULL;
 static void prvQueueReceiveTask( void *pvParameters );
@@ -78,6 +79,7 @@ static void prvQueueReceiveTask( void *pvParameters )
 		is it the expected value?  If it is, toggle the LED. */
 		if( ulReceivedValue == ulExpectedValue )
 		{
+			trace_printf("123\n");
 			//mainTOGGLE_LED();
 			ulReceivedValue = 0U;
 		}
