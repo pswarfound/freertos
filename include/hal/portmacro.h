@@ -162,6 +162,7 @@ not necessary for to use this port.  They are defined so the common demo files
 
 #define portINLINE	__inline
 
+#define portWEAK __attribute__((weak))
 #ifndef portFORCE_INLINE
 	#define portFORCE_INLINE inline __attribute__(( always_inline))
 #endif

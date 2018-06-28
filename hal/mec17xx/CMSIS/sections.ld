@@ -54,7 +54,8 @@ PROVIDE ( _Main_Stack_Size = __Main_Stack_Size ) ;
 
 __Main_Stack_Limit = __stack  - __Main_Stack_Size ;
 
-/*"PROVIDE" allows to easily override these values from an object file or the command line. */
+/* "PROVIDE" allows to easily override these values from an 
+ * object file or the command line. */
 PROVIDE ( _Main_Stack_Limit = __Main_Stack_Limit ) ;
 
 /*
@@ -88,8 +89,15 @@ SECTIONS
 	.isr_vector :
 	{
 		. = ALIGN(4);
+		 __vectors_start = ABSOLUTE(.) ;
 		_isr_vector = .;
 		KEEP(*(.isr_vector))
+		/* 
+	         * This section is here for convenience, to store the
+	         * startup code at the beginning of the flash area, hoping that
+	         * this will increase the readability of the listing.
+	         */
+	        *(.after_vectors .after_vectors.*)	/* Startup code and ISR */
 	} >ROM
 
 	privileged_functions :

@@ -42,7 +42,7 @@
 #define __CORE_CM4_H_GENERIC
 
 #include <stdint.h>
-
+#include "MCHP_device_header.h"
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -93,7 +93,6 @@
   #define __ASM            __asm                                      /*!< asm keyword for GNU Compiler */
   #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler */
   #define __STATIC_INLINE  static inline
-
 #elif defined ( __ICCARM__ )
   #define __ASM            __asm                                      /*!< asm keyword for IAR Compiler */
   #define __INLINE         inline                                     /*!< inline keyword for IAR Compiler. Only available in High optimization mode! */
@@ -1574,7 +1573,9 @@ typedef struct
   \defgroup CMSIS_Core_FunctionInterface Functions and Instructions Reference
 */
 
-
+#ifndef __STATIC_INLINE
+#define __STATIC_INLINE static inline
+#endif
 
 /* ##########################   NVIC functions  #################################### */
 /**

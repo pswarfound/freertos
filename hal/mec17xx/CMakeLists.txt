@@ -1,9 +1,13 @@
 INCLUDE_DIRECTORIES(./CMSIS)
 INCLUDE_DIRECTORIES(./os)
+INCLUDE_DIRECTORIES(./peripheral_library)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/freertos/include)
 
 aux_source_directory(./CMSIS _SRC)
+aux_source_directory(./CMSIS/diag _SRC)
+aux_source_directory(./CMSIS/newlib _SRC)
 aux_source_directory(./os/ _SRC)
+aux_source_directory(./peripheral_library _SRC)
 
 ADD_library(hal STATIC ${_SRC})
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)

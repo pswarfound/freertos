@@ -777,3 +777,23 @@ static void vPortEnableVFP( void )
 #endif /* configASSERT_DEFINED */
 
 
+#if(  configCHECK_FOR_STACK_OVERFLOW > 0 )
+portWEAK void vApplicationStackOverflowHook( TaskHandle_t xTask, char *pcTaskName )
+{
+	(void)xTask;
+	(void)pcTaskName;
+}
+#endif
+
+#if( configUSE_TICK_HOOK > 0 )
+
+portWEAK void vApplicationTickHook( void )
+{
+}
+#endif
+
+#if( configUSE_MALLOC_FAILED_HOOK == 1 )
+portWEAK void vApplicationMallocFailedHook( void )
+{
+}
+#endif
